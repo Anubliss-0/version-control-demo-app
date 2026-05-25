@@ -1,9 +1,13 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[ destroy ]
+  before_action :set_student, only: %i[ show destroy ]
 
   # GET /students or /students.json
   def index
     @students = Student.all
+  end
+
+  # GET /students/1
+  def show
   end
 
   # GET /students/new
