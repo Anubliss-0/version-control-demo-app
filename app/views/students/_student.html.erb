@@ -1,7 +1,7 @@
 <div id="<%= dom_id student %>">
   <div>
     <strong>Name:</strong>
-    <%= student.name %>
+    <%= link_to student.name, student_path(student) %>
   </div>
 
   <div>
