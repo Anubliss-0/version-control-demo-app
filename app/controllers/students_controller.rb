@@ -1,5 +1,5 @@
 class StudentsController < ApplicationController
-  before_action :set_student, only: %i[ show destroy ]
+  before_action :set_student, only: %i[ show edit update destroy ]
 
   # GET /students or /students.json
   def index
@@ -15,6 +15,10 @@ class StudentsController < ApplicationController
     @student = Student.new
   end
 
+  # GET /students/1/edit
+  def edit
+  end
+
   # POST /students or /students.json
   def create
     @student = Student.new(student_params)
@@ -27,6 +31,15 @@ class StudentsController < ApplicationController
         format.html { render :new, status: :unprocessable_content }
         format.json { render json: @student.errors, status: :unprocessable_content }
       end
+    end
+  end
+
+  # PATCH/PUT /students/1
+  def update
+    if @student.update(student_params)
+      redirect_to root_path, notice: "Student was successfully updated."
+    else
+      render :edit, status: :unprocessable_content
     end
   end
 
